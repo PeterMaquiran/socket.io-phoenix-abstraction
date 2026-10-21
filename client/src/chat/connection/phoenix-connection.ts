@@ -40,9 +40,7 @@ export class PhoenixConnection extends RealtimeConnection {
 
     const channel = socket.channel("chat:lobby", {});
     this.channel = channel;
-    for (const event of this.handlers.keys()) {
-      channel.on(event, (payload: unknown) => this.dispatch(event, payload));
-    }
+    this.bindExisting(channel);
 
     await new Promise<void>((resolve, reject) => {
       channel
@@ -94,6 +92,12 @@ export class PhoenixConnection extends RealtimeConnection {
     return () => {
       handlers?.delete(handler);
     };
+  }
+
+  private bindExisting(channel: Channel) {
+    for (const event of this.handlers.keys()) {
+      channel.on(event, (payload: unknown) => this.dispatch(event, payload));
+    }
   }
 
   private dispatch(event: string, payload: unknown) {
