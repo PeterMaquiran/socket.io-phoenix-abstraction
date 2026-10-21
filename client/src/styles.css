@@ -1,0 +1,212 @@
+:root {
+  color-scheme: light;
+  --bg: #f3efe6;
+  --ink: #1d1a16;
+  --muted: #6f675e;
+  --line: #e2d9cc;
+  --card: #fffdf8;
+  --accent: #0e5c5a;
+  --accent-ink: #f4fffe;
+  --danger: #9d3418;
+  --mine: #e5f2f1;
+  --shadow: 0 18px 50px rgb(70 48 20 / 8%);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button, input, select { font: inherit; color: inherit; }
+
+#app {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.title {
+  margin: 0;
+  font-family: Palatino, "Iowan Old Style", Georgia, serif;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.driver {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.driver select {
+  min-width: 180px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: #b7aea2;
+}
+
+.dot.on { background: var(--accent); }
+
+.alert {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fde8df;
+  color: var(--danger);
+}
+
+.alert[hidden] { display: none; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  max-width: 520px;
+}
+
+.card-title, .panel-title { margin: 0; font-size: 20px; }
+
+.muted { color: var(--muted); line-height: 1.5; }
+
+.auth-form, .field, .composer, .edit-form { display: grid; gap: 8px; }
+
+.auth-form { margin-top: 18px; }
+
+.field input, .composer input, .edit-form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.actions, .message-actions, .edit-form, .thread-bar, .composer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actions { margin-top: 6px; }
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.primary { background: var(--accent); color: var(--accent-ink); }
+.ghost { background: transparent; border: 1px solid var(--line); }
+.btn-text { background: transparent; padding: 4px 6px; color: var(--muted); }
+.danger { color: var(--danger); }
+
+.room {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  min-height: 620px;
+}
+
+.people, .thread {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.people { padding: 18px; }
+
+.people-list, .messages { list-style: none; margin: 0; padding: 0; }
+
+.people-list { margin-top: 14px; display: grid; gap: 10px; }
+
+.people-list li, .meta, .thread-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.person { font-weight: 600; }
+.you { color: var(--muted); font-weight: 500; }
+.presence { color: var(--muted); font-size: 12px; }
+.presence.on { color: var(--accent); }
+
+.thread { display: flex; flex-direction: column; min-width: 0; }
+.thread-bar, .composer { padding: 14px 16px; }
+.thread-bar { border-bottom: 1px solid var(--line); }
+.composer { border-top: 1px solid var(--line); }
+.composer input { flex: 1; }
+
+.messages {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message {
+  max-width: min(560px, 100%);
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f7f3ec;
+}
+
+.message.mine { background: var(--mine); align-self: flex-end; }
+
+.author { font-weight: 600; }
+.time, .edited, .empty { color: var(--muted); font-size: 12px; }
+.msg-text { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.edit-form { margin-top: 8px; }
+.edit-form input { flex: 1; }
+
+@media (max-width: 760px) {
+  .title { font-size: 32px; }
+  .top, .room { display: grid; grid-template-columns: 1fr; }
+  .room { min-height: 0; }
+  .messages { max-height: 50vh; }
+}

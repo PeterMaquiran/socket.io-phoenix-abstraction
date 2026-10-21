@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+
+server-phoenix/_build/
+server-phoenix/deps/
+server-phoenix/erl_crash.dump
+server-phoenix/*.ez
+.elixir_ls/
